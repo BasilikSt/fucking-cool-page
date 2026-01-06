@@ -1,0 +1,218 @@
+/* ===================== RESET ===================== */
+
+* {
+  box-sizing: border-box;
+}
+
+/* ===================== BASE ===================== */
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, hsl(320, 22%, 28%), hsl(315, 18%, 20%));
+  color: #efe6ea;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.page {
+  padding: 60px 10% 120px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===================== TEXT BLOCKS ===================== */
+
+.block {
+  max-width: 540px;
+  margin: 24px 0 6px;
+  padding: 22px 28px;
+  background: rgba(255, 255, 255, 0.035);
+  border-radius: 18px;
+  backdrop-filter: blur(2px);
+}
+
+.block + .block {
+  margin-top: 18px;
+}
+
+.block.left { text-align: left; }
+.block.right { margin-left: auto; text-align: right; }
+
+.block p {
+  margin: 0;
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+/* ===================== IMAGES OUTSIDE ===================== */
+
+.outside-img {
+  display: block;
+  max-width: 185px;
+  opacity: 0.75;
+  border-radius: 14px;
+  margin-bottom: 26px;
+}
+
+.left-img { margin-left: 22px; }
+.right-img { margin-left: auto; margin-right: 22px; }
+
+/* ===================== PLAYER ===================== */
+
+.player-zone {
+  margin: 90px auto 110px;
+  text-align: center;
+}
+
+#playBtn {
+  background: transparent;
+  border: 1.4px solid rgba(219,112,147,0.45);
+  color: #e3b2c3;
+  padding: 10px 32px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+#playBtn:hover {
+  background: rgba(219,112,147,0.25);
+  color: #fff;
+}
+
+/* ===================== LYRICS ===================== */
+
+.lyrics {
+  margin-top: 28px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lyrics span {
+  display: block;
+  opacity: 0;
+  margin: 4px 0;
+  font-size: 13.5px;
+  color: rgba(255,182,193,0.7);
+  transition: opacity 1.2s ease;
+}
+
+/* ===================== FRIENDS ===================== */
+
+.friends {
+  max-width: 360px;
+  margin: 90px auto 0;
+  text-align: center;
+}
+
+.friends-title {
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  text-transform: lowercase;
+  color: rgba(255, 190, 210, 0.55);
+  margin-bottom: 18px;
+}
+
+.friends-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.friends-list li {
+  font-size: 14px;
+  padding: 8px 0;
+  color: rgba(239,230,234,0.75);
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.friends-list li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: rgba(255, 170, 200, 0.5);
+  transition: all 0.35s ease;
+  transform: translateX(-50%);
+}
+
+.friends-list li:hover {
+  color: rgba(255, 200, 215, 0.95);
+}
+
+.friends-list li:hover::after {
+  width: 60%;
+}
+
+/* ===================== DRAGGABLE (SMOOTH) ===================== */
+
+#floating {
+  position: fixed;
+  bottom: 110px;
+  left: 60px;
+  width: 76px;
+  cursor: grab;
+  opacity: 0.9;
+  z-index: 3;
+  transition: transform 0.2s ease;
+}
+
+#floating.dragging {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
+
+/* ===================== FOOTER ===================== */
+
+footer {
+  position: fixed;
+  bottom: 22px;
+  right: 34px;
+  z-index: 3;
+}
+
+.credit {
+  font-size: 12px;
+  color: rgba(238,130,238,0.4);
+  transition: color 0.3s ease;
+}
+
+.credit:hover {
+  color: rgba(255,105,180,0.6);
+}
+
+/* ===================== STAR DUST ===================== */
+
+#dust {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+/* ===================== JEALOUS THOUGHTS ===================== */
+
+.jealous-thought {
+  position: fixed;
+  font-size: 12.5px;
+  color: rgba(255,200,215,0.75);
+  font-style: italic;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 12px rgba(255,160,190,0.25);
+  animation: floatFade 6s ease forwards;
+}
+
+@keyframes floatFade {
+  0% { opacity: 0; transform: translateY(6px); }
+  15% { opacity: 1; }
+  80% { opacity: 0.7; }
+  100% { opacity: 0; transform: translateY(-22px); }
+}
