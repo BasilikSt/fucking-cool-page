@@ -1,39 +1,30 @@
-/* ===================== RESET ===================== */
-
 * {
   box-sizing: border-box;
 }
 
-/* ===================== BASE ===================== */
-
 body {
   margin: 0;
-  background: radial-gradient(circle at top, hsl(320, 22%, 28%), hsl(315, 18%, 20%));
-  color: #efe6ea;
+  background: radial-gradient(circle at top, #3a2732, #22161d);
+  color: #f0e7ec;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
-  position: relative;
 }
 
 .page {
-  padding: 60px 10% 120px;
+  padding: 50px 10% 120px;
   position: relative;
   z-index: 2;
 }
 
-/* ===================== TEXT BLOCKS ===================== */
+/* ================= TEXT BLOCKS ================= */
 
 .block {
-  max-width: 540px;
-  margin: 24px 0 6px;
-  padding: 22px 28px;
-  background: rgba(255, 255, 255, 0.035);
+  max-width: 520px;
+  margin: 18px 0 6px;
+  padding: 20px 26px;
+  background: rgba(255,255,255,0.035);
   border-radius: 18px;
   backdrop-filter: blur(2px);
-}
-
-.block + .block {
-  margin-top: 18px;
 }
 
 .block.left { text-align: left; }
@@ -41,78 +32,45 @@ body {
 
 .block p {
   margin: 0;
-  font-size: 15.5px;
+  font-size: 15px;
   line-height: 1.55;
+  color: rgba(240,230,235,0.9);
 }
 
-/* ===================== IMAGES OUTSIDE ===================== */
+/* эмоциональный текст */
+.block.emotion p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(235,185,210,0.9);
+}
+
+/* ================= IMAGES ================= */
 
 .outside-img {
   display: block;
-  max-width: 185px;
+  max-width: 170px;
   opacity: 0.75;
   border-radius: 14px;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
 }
 
-.left-img { margin-left: 22px; }
-.right-img { margin-left: auto; margin-right: 22px; }
+.left-img { margin-left: 18px; }
+.right-img { margin-left: auto; margin-right: 18px; }
 
-/* ===================== PLAYER ===================== */
-
-.player-zone {
-  margin: 90px auto 110px;
-  text-align: center;
-}
-
-#playBtn {
-  background: transparent;
-  border: 1.4px solid rgba(219,112,147,0.45);
-  color: #e3b2c3;
-  padding: 10px 32px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 999px;
-  transition: all 0.3s ease;
-}
-
-#playBtn:hover {
-  background: rgba(219,112,147,0.25);
-  color: #fff;
-}
-
-/* ===================== LYRICS ===================== */
-
-.lyrics {
-  margin-top: 28px;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.lyrics span {
-  display: block;
-  opacity: 0;
-  margin: 4px 0;
-  font-size: 13.5px;
-  color: rgba(255,182,193,0.7);
-  transition: opacity 1.2s ease;
-}
-
-/* ===================== FRIENDS ===================== */
+/* ================= FRIENDS ================= */
 
 .friends {
   max-width: 360px;
-  margin: 90px auto 0;
+  margin: 60px auto 0;
   text-align: center;
 }
 
 .friends-title {
-  font-size: 13px;
-  letter-spacing: 0.6px;
-  text-transform: lowercase;
-  color: rgba(255, 190, 210, 0.55);
-  margin-bottom: 18px;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  color: rgba(255,190,210,0.55);
+  margin-bottom: 16px;
 }
 
 .friends-list {
@@ -123,13 +81,14 @@ body {
 
 .friends-list li {
   font-size: 14px;
-  padding: 8px 0;
+  padding: 7px 0;
   color: rgba(239,230,234,0.75);
   cursor: pointer;
-  transition: all 0.35s ease;
   position: relative;
+  transition: color 0.35s ease;
 }
 
+/* полосочка ВЕРНУЛАСЬ */
 .friends-list li::after {
   content: "";
   position: absolute;
@@ -137,38 +96,76 @@ body {
   bottom: 0;
   width: 0%;
   height: 1px;
-  background: rgba(255, 170, 200, 0.5);
-  transition: all 0.35s ease;
+  background: rgba(255,170,200,0.55);
   transform: translateX(-50%);
+  transition: width 0.35s ease;
 }
 
 .friends-list li:hover {
-  color: rgba(255, 200, 215, 0.95);
+  color: rgba(255,210,225,0.95);
 }
 
 .friends-list li:hover::after {
-  width: 60%;
+  width: 62%;
 }
 
-/* ===================== DRAGGABLE (SMOOTH) ===================== */
+/* ================= PLAYER ================= */
+
+.player-zone {
+  margin: 80px auto 100px;
+  text-align: center;
+}
+
+#playBtn {
+  background: transparent;
+  border: 1.3px solid rgba(219,112,147,0.45);
+  color: #e3b2c3;
+  padding: 9px 30px;
+  font-size: 13.5px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#playBtn:hover {
+  background: rgba(219,112,147,0.25);
+  color: #fff;
+}
+
+/* ================= LYRICS ================= */
+
+.lyrics {
+  margin-top: 22px;
+}
+
+.lyrics span {
+  display: block;
+  opacity: 0;
+  margin: 3px 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(230, 230, 230, 0.85);
+  letter-spacing: 0.2px;
+}
+
+/* ================= FLOATING ================= */
 
 #floating {
   position: fixed;
-  bottom: 110px;
-  left: 60px;
-  width: 76px;
+  top: 120px;
+  left: 70px;
+  width: 80px;
+
   cursor: grab;
-  opacity: 0.9;
-  z-index: 3;
-  transition: transform 0.2s ease;
+  z-index: 10;
+
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
 }
 
-#floating.dragging {
-  cursor: grabbing;
-  transform: scale(0.95);
-}
-
-/* ===================== FOOTER ===================== */
+/* ================= FOOTER ================= */
 
 footer {
   position: fixed;
@@ -177,17 +174,19 @@ footer {
   z-index: 3;
 }
 
+/* подпись снова реагирует */
 .credit {
-  font-size: 12px;
-  color: rgba(238,130,238,0.4);
-  transition: color 0.3s ease;
+  font-size: 11.5px;
+  color: rgba(238,130,238,0.35);
+  transition: color 0.35s ease, letter-spacing 0.35s ease;
 }
 
-.credit:hover {
-  color: rgba(255,105,180,0.6);
+footer:hover .credit {
+  color: rgba(255,180,215,0.8);
+  letter-spacing: 0.6px;
 }
 
-/* ===================== STAR DUST ===================== */
+/* ================= DUST ================= */
 
 #dust {
   position: fixed;
@@ -197,22 +196,37 @@ footer {
   opacity: 0.45;
 }
 
-/* ===================== JEALOUS THOUGHTS ===================== */
+/* ================= THOUGHTS ================= */
 
 .jealous-thought {
   position: fixed;
-  font-size: 12.5px;
-  color: rgba(255,200,215,0.75);
-  font-style: italic;
-  white-space: nowrap;
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.3px;
+  color: rgba(255, 200, 215, 0.7);
   pointer-events: none;
-  text-shadow: 0 0 12px rgba(255,160,190,0.25);
+  white-space: nowrap;
+  text-shadow: 0 0 10px rgba(255, 160, 190, 0.15);
   animation: floatFade 6s ease forwards;
 }
 
 @keyframes floatFade {
   0% { opacity: 0; transform: translateY(6px); }
   15% { opacity: 1; }
-  80% { opacity: 0.7; }
   100% { opacity: 0; transform: translateY(-22px); }
+}
+
+/* ================= картинка ы углу ================= */
+
+#corner-img {
+  position: fixed;
+  left: 22px;
+  bottom: 20px;
+
+  width: 120px;
+  opacity: 0.75;
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
 }

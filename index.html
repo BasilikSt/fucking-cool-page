@@ -3,84 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <title>Jealousy</title>
+
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
 <canvas id="dust"></canvas>
 
-  <div class="page">
+<div class="page">
 
-    <!-- BLOCK 1 -->
-    <section class="block left">
-      <p>
-        Jealousy is a sick, nasty, low-key addictive feeling.  
-        It eats you up inside, makes you hate everyone, even yourself.
-      </p>
-    </section>
-    <img src="pictures/img-left-1.png" class="outside-img left-img" alt="">
+  <!-- BLOCK 1 -->
+  <section class="block left emotion">
+    <p>
+      Jealousy is a sick, nasty, low-key addictive feeling.  
+      It eats you up inside, makes you hate everyone, even yourself.
+    </p>
+  </section>
+  <img src="pictures/img-left-1.png" class="outside-img left-img" alt="">
 
-    <!-- BLOCK 2 -->
-    <section class="block right">
-      <p>
-        It gives you that weird flutter in your chest —  
-        kinda thrilling, in a messed-up way.  
-        Bitter. Ruthless. Alive.
-      </p>
-    </section>
-    <img src="pictures/img-right-1.png" class="outside-img right-img" alt="">
+  <!-- BLOCK 2 -->
+  <section class="block right">
+    <p>
+      It gives you that weird flutter in your chest —  
+      kinda thrilling, in a messed-up way.  
+      Bitter. Ruthless. Alive.
+    </p>
+  </section>
+  <img src="pictures/img-right-1.png" class="outside-img right-img" alt="">
 
-    <!-- BLOCK 3 -->
-    <section class="block left">
-      <p>
-        You hate this feeling, but you live with it.  
-        It hurts like hell when you lose someone —  
-        or when you force yourself to draw that  
-        “just friends, nothing more” line.
-      </p>
-    </section>
-    <section class="friends">
-      <div class="friends-title">people I get attached to</div>
-      <ul class="friends-list">
-        <li>@EdwanNeFake</li>
-        <li>@Fedya_Serun</li>
-        <li>@rc933</li>
-        <li>@colekisser</li>
-        <li>@radishoffc</li>
-      </ul>
-    </section>
+  <!-- BLOCK 3 -->
+  <section class="block left emotion">
+    <p>
+      You hate this feeling, but you live with it.  
+      It hurts like hell when you lose someone —  
+      or when you force yourself to draw that  
+      “just friends, nothing more” line.
+    </p>
+  </section>
 
+  <!-- FRIENDS -->
+  <section class="friends">
+    <div class="friends-title">people I get attached to</div>
+    <ul class="friends-list">
+      <li>@EdwanNeFake</li>
+      <li>@Fedya_Serun</li>
+      <li>@rc933</li>
+      <li>@colekisser</li>
+      <li>@radishoffc</li>
+    </ul>
+  </section>
 
-    <!-- PLAYER -->
-    <section class="player-zone">
-      <audio id="audio" src="music/song.mp3"></audio>
+  <!-- PLAYER -->
+  <section class="player-zone">
+    <audio id="audio" src="music/song.mp3"></audio>
 
-      <button id="playBtn">play</button>
+    <button id="playBtn">play</button>
 
-      <div class="lyrics">
-        <span>You’re goth and glam</span>
-        <span>I hope it’s not a one night stand</span>
-        <span>But I’m so cold and you keep me warm yeah</span>
-        <span>Ativan</span>
-        <span>Cigarrettes and gin in hand</span>
-        <span>Its just you’re so cool and I wanna steal this moment with you</span>
-        <span>I miss yer lips</span>
-        <span>I miss yer brain</span>
-        <span>I miss yer kiss</span>
-        <span>Already</span>
-      </div>
-    </section>
+    <div class="lyrics">
+      <span>You’re goth and glam</span>
+      <span>I hope it’s not a one night stand</span>
+      <span>But I’m so cold and you keep me warm yeah</span>
+      <span>Ativan</span>
+      <span>Cigarrettes and gin in hand</span>
+      <span>Its just you’re so cool and I wanna steal this moment with you</span>
+      <span>I miss yer lips</span>
+      <span>I miss yer brain</span>
+      <span>I miss yer kiss</span>
+      <span>Already</span>
+    </div>
+  </section>
 
-  </div>
+</div>
 
-  <!-- draggable -->
-  <img src="pictures/floating.png" id="floating" alt="">
+<img src="pictures/corner.png" id="corner-img" alt="">
+<img src="pictures/floating.png" id="floating" alt="">
 
-  <footer>
-    <span class="credit">created by Basilik Stotch · 07.01.2026</span>
-  </footer>
+<footer>
+  <span class="credit">created by Basilik Stotch · 07.01.2026</span>
+</footer>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 <script src="dust.js"></script>
 
 </body>
