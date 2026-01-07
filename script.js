@@ -89,63 +89,88 @@ spawnThought();
 setInterval(() => spawnThought(), 3400);
 
 /* ===== FRIEND INTERACTION ===== */
-/* ТОЛЬКО КЛИК, НИКАКОГО HOVER */
+const friends = document.querySelectorAll('.friends-list li');
 
-document.querySelectorAll('.friends-list li').forEach(item => {
+friends.forEach(item => {
   item.addEventListener('click', () => {
-    spawnThought(`I get attached to ${item.textContent}`);
+
+    // общая мысль
+    spawnThought(`i'm totally obessed with ${item.textContent}`);
+
+    // очистить старые эффекты
+    friends.forEach(i => {
+      i.className = i.className.replace(/-active/g, '');
+    });
+
+    // индивидуальный эффект
+    const user = item.dataset.user;
+
+    if (user === 'edwan') item.classList.add('edwan-active');
+    if (user === 'fedya') item.classList.add('fedya-active');
+    if (user === 'rc') item.classList.add('rc-active');
+    if (user === 'cole') item.classList.add('cole-active');
+    if (user === 'radish') item.classList.add('radish-active');
+
+    // эффект не навсегда
+    setTimeout(() => {
+      item.className = item.className.replace(/-active/g, '');
+    }, 2200);
   });
 });
 
-/* ===== DRAGGABLE IMAGE (FINAL, FIXED) ===== */
+/* ===== DRAGGABLE IMAGE ===== */
 
 const floating = document.getElementById('floating');
 
-let dragging = false;
-let startX = 0;
-let startY = 0;
-let imgX = 0;
-let imgY = 0;
+let isDragging = false;
+let offsetX = 0;
+let offsetY = 0;
+
+/* подготовка координат */
+function normalizePosition() {
+  const rect = floating.getBoundingClientRect();
+  floating.style.left = rect.left + 'px';
+  floating.style.top = rect.top + 'px';
+  floating.style.right = 'auto';
+}
+normalizePosition();
 
 /* старт */
-function startDrag(e) {
-  e.preventDefault();
-  dragging = true;
+function dragStart(e) {
+  isDragging = true;
   floating.style.cursor = 'grabbing';
 
-  const touch = e.touches ? e.touches[0] : e;
-  startX = touch.clientX;
-  startY = touch.clientY;
-
   const rect = floating.getBoundingClientRect();
-  imgX = rect.left;
-  imgY = rect.top;
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  offsetX = clientX - rect.left;
+  offsetY = clientY - rect.top;
 }
 
 /* движение */
-function moveDrag(e) {
-  if (!dragging) return;
+function dragMove(e) {
+  if (!isDragging) return;
 
-  const touch = e.touches ? e.touches[0] : e;
-  const dx = touch.clientX - startX;
-  const dy = touch.clientY - startY;
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-  floating.style.left = imgX + dx + 'px';
-  floating.style.top = imgY + dy + 'px';
+  floating.style.left = clientX - offsetX + 'px';
+  floating.style.top = clientY - offsetY + 'px';
 }
 
 /* конец */
-function endDrag() {
-  dragging = false;
+function dragEnd() {
+  isDragging = false;
   floating.style.cursor = 'grab';
 }
 
 /* мышь */
-floating.addEventListener('mousedown', startDrag);
-window.addEventListener('mousemove', moveDrag);
-window.addEventListener('mouseup', endDrag);
+floating.addEventListener('mousedown', dragStart);
+document.addEventListener('mousemove', dragMove);
+document.addEventListener('mouseup', dragEnd);
 
 /* тач */
-floating.addEventListener('touchstart', startDrag, { passive: false });
-window.addEventListener('touchmove', moveDrag, { passive: false });
-window.addEventListener('touchend', endDrag);
+floating.addEventListener('touchstart', dragStart);
+document.addEventListener('touchmove', dragMove, { passive: false });
+document.addEventListener('touchend', dragEnd);

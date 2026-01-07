@@ -109,6 +109,69 @@ body {
   width: 62%;
 }
 
+/* базовый эффект клика */
+.friends-list li {
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+/* EDWAN — нервная дрожь */
+.friends-list li.edwan-active {
+  animation: jitter 0.35s infinite;
+}
+
+/* FEDYA — тихий срыв */
+.friends-list li.fedya-active {
+  animation: fedyaBreak 1.4s ease-in-out infinite;
+}
+
+@keyframes fedyaBreak {
+  0%   { transform: translateY(0); opacity: 0.85; }
+  30%  { transform: translateY(-1px); opacity: 1; }
+  55%  { transform: translateY(0); opacity: 0.75; }
+  75%  { transform: translateY(1px); opacity: 0.9; }
+  100% { transform: translateY(0); opacity: 0.85; }
+}
+
+/* RC — выключенный */
+.friends-list li.rc-active {
+  color: rgba(210, 215, 220, 0.85);
+  text-shadow:
+    0 0 6px rgba(180,190,200,0.25),
+    0 0 14px rgba(150,160,170,0.15);
+  filter: blur(0.2px);
+}
+
+/* COLE — плавный наклон */
+.friends-list li.cole-active {
+  transform: rotate(-2deg) translateY(-2px);
+}
+
+/* RADISH — мягкое свечение */
+.friends-list li.radish-active {
+  box-shadow: 0 6px 18px rgba(255,140,180,0.35);
+  border-radius: 6px;
+}
+
+/* анимации */
+@keyframes jitter {
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-1px,1px); }
+  50% { transform: translate(1px,-1px); }
+  75% { transform: translate(-1px,-1px); }
+  100% { transform: translate(0,0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+.friends:hover .friends-title {
+  color: rgba(255,210,225,0.8);
+  letter-spacing: 1px;
+}
+
 /* ================= PLAYER ================= */
 
 .player-zone {
@@ -149,21 +212,27 @@ body {
   letter-spacing: 0.2px;
 }
 
-/* ================= FLOATING ================= */
+/* ===== DRAGGABLE IMAGE ===== */
 
 #floating {
   position: fixed;
-  top: 120px;
-  left: 70px;
-  width: 80px;
+  top: 26px;
+  right: 26px;
 
+  width: 70px;
   cursor: grab;
-  z-index: 10;
+  opacity: 0.9;
+  z-index: 999;
 
   user-select: none;
-  -webkit-user-drag: none;
   touch-action: none;
 }
+
+#floating:active {
+  cursor: grabbing;
+  transform: scale(0.96);
+}
+
 
 /* ================= FOOTER ================= */
 
@@ -216,14 +285,14 @@ footer:hover .credit {
   100% { opacity: 0; transform: translateY(-22px); }
 }
 
-/* ================= картинка ы углу ================= */
+/* ================= CORNER PICTURE ================= */
 
 #corner-img {
   position: fixed;
   left: 22px;
   bottom: 20px;
 
-  width: 140px;
+  width: 120px;
   opacity: 0.75;
 
   pointer-events: none;
